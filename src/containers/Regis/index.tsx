@@ -12,7 +12,7 @@ const Regis = () => {
         const response: RegisResponse = await fetching.json()
         if(response) {
             localStorage.setItem('token', response.token)
-            window.location.replace('/')
+            window.location.replace('/login')
         }
     }
 
