@@ -47,6 +47,7 @@ const LoginForm = ({ onSubmit } : Props) => {
                 </div>
                 <Button type={'primary'} htmlType={"submit"}>Submit</Button>
                 <br></br>
+                <Typography.Paragraph>{'New user? you can register first (It is free!)'}</Typography.Paragraph>
                 <Button type={'primary'} htmlType={"submit"}>Register</Button>
             </form>
         </Card>
