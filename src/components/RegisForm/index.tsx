@@ -1,7 +1,7 @@
 import { Button, Card, Input, Typography } from "antd"
 import { useFormik } from "formik"
 import { RegisForm as RegisFormProps } from "../../types"
-import { initialValues, validationSchema } from "./regisFormShema"
+import { initialValues, validationSchema } from "./regisFormSchema"
 
 interface Props {
     onSubmit: (values: RegisFormProps) => void
