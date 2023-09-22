@@ -15,6 +15,10 @@ const items: MenuProps['items'] = [
         label: 'Profile',
         key: '/profile'
     },
+    {
+        label: 'Log Out',
+        key: '/login'
+    },
 ]
 
 const Navbar = () => {
