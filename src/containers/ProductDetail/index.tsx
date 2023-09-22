@@ -5,7 +5,7 @@ const ProductDetail = () => {
 
     return (
         <div>
-            Ini adalah halaman product detail dengan id: {params?.id}
+            This is detail of product page with id: {params?.id}
         </div>
     )
 }

@@ -60,6 +60,18 @@ const ProductList = () => {
             key: 'price',
         },
         {
+            title: 'Brand',
+            dataIndex: 'brand',
+            key: 'brand',
+            //
+        },
+        {
+            title: 'Category',
+            dataIndex: 'category',
+            key: 'category',
+            //
+        },
+        {
             title: 'Action',
             key: 'action',
             render: (_, record) => (
@@ -74,8 +86,8 @@ const ProductList = () => {
 
     return (
         <>
-            <h3>Daftar Product</h3>
-            <Button type={'primary'} onClick={() => navigate('/product/new')}>Tambah Product Baru</Button>
+            <h3>Product List</h3>
+            <Button type={'primary'} onClick={() => navigate('/product/new')}>Add New Product</Button>
             <ProductListComponent columns={columns} data={products}/>
         </>
     )

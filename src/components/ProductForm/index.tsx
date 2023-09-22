@@ -24,7 +24,7 @@ const ProductForm = ({ onSubmit, product } : Props) => {
         <Card title={"Product Form"} bordered style={{ width: 350 }}>
             <form onSubmit={formMik.handleSubmit}>
                 <div>
-                    <Typography.Paragraph>{'Nama Produk'}</Typography.Paragraph>
+                    <Typography.Paragraph>{'Product Name'}</Typography.Paragraph>
                     <Input name={'title'}
                         value={formMik.values.title} 
                         onChange={formMik.handleChange('title')}
@@ -35,7 +35,7 @@ const ProductForm = ({ onSubmit, product } : Props) => {
                     )}
                 </div>
                 <div>
-                    <Typography.Paragraph>{'Harga Produk'}</Typography.Paragraph>
+                    <Typography.Paragraph>{'Product Price'}</Typography.Paragraph>
                     <Input name={'price'}
                         value={formMik.values.price} 
                         onChange={formMik.handleChange('price')}
@@ -43,6 +43,28 @@ const ProductForm = ({ onSubmit, product } : Props) => {
                     />
                     {formMik.errors.price && (
                         <Typography.Paragraph>{formMik.errors.price}</Typography.Paragraph>
+                    )}
+                </div>
+                <div>
+                    <Typography.Paragraph>{'Product Brand'}</Typography.Paragraph>
+                    <Input name={'brand'}
+                        value={formMik.values.brand} 
+                        onChange={formMik.handleChange('brand')}
+                        status={formMik.errors.price && 'error'}
+                    />
+                    {formMik.errors.brand && (
+                        <Typography.Paragraph>{formMik.errors.brand}</Typography.Paragraph>
+                    )}
+                </div>
+                <div>
+                    <Typography.Paragraph>{'Product Category'}</Typography.Paragraph>
+                    <Input name={'category'}
+                        value={formMik.values.category} 
+                        onChange={formMik.handleChange('category')}
+                        status={formMik.errors.category && 'error'}
+                    />
+                    {formMik.errors.category && (
+                        <Typography.Paragraph>{formMik.errors.category}</Typography.Paragraph>
                     )}
                 </div>
                 <Button type={'primary'} htmlType={"submit"}>Submit</Button>
