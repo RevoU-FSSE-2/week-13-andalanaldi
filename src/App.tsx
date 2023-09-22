@@ -3,6 +3,7 @@ import AppProvider from './Provider/AppProvider'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home, Product, Profile, ProductDetail, ProductEdit, ProductNew, Login } from './pages'
 import { PublicLayout, AnotherLayout } from './layouts'
+import { Regis } from './containers'
 
 function App() {
 
@@ -45,7 +46,8 @@ function App() {
         },
         {
           path: '/register',
-          element: <>register page</>
+          element: <Regis />
+          //<>register page</>
         }
       ]
     }

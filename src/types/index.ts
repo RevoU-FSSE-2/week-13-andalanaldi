@@ -25,3 +25,17 @@ export interface LoginResponse {
     username: string;
     token: string;
 }
+
+export interface RegisForm {
+    username: string;
+    email   : string;
+    password: string;
+}
+
+export interface RegisResponse {
+    username: string;
+    email: string;
+    // firstName: string;
+    // lastName: string;
+    token: string;
+}
