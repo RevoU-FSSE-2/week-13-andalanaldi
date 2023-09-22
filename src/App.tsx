@@ -1,9 +1,8 @@
 import AppProvider from './Provider/AppProvider'
 // import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Home, Product, Profile, ProductDetail, ProductEdit, ProductNew, Login } from './pages'
+import { Home, Product, Profile, ProductDetail, ProductEdit, ProductNew, Login, Regis } from './pages'
 import { PublicLayout, AnotherLayout } from './layouts'
-import { Regis } from './containers'
 
 function App() {
 

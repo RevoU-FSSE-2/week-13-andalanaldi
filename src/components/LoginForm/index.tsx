@@ -46,6 +46,8 @@ const LoginForm = ({ onSubmit } : Props) => {
                     )}
                 </div>
                 <Button type={'primary'} htmlType={"submit"}>Submit</Button>
+                <br></br>
+                <Button type={'primary'} htmlType={"submit"}>Register</Button>
             </form>
         </Card>
     )
