@@ -11,7 +11,7 @@ const Regis = () => {
         })
         const response: RegisResponse = await fetching.json()
         if(response) {
-            localStorage.setItem('token', response.token)
+            localStorage.setItem('name', response.name)
             window.location.replace('/login')
         }
     }

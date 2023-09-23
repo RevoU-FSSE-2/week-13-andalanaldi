@@ -1,5 +1,5 @@
 import { ColumnsType } from 'antd/es/table';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef  } from 'react';
 import { ProductList as ProductListComponent } from '../../components'
 import { Product, GetProductResponse } from '../../types';
 import { Button } from 'antd'
@@ -11,17 +11,41 @@ const ProductList = () => {
     const navigate = useNavigate();
 
     const getProductList = async () => {
-        const fetching = await fetch('https://mock-api.arikmpt.com/api/category?page=1&name=mock%20category')
-        const response: GetProductResponse = await fetching.json();
-        setProducts(response.products ?? []);
+        const token = localStorage.getItem('authToken');
+        console.log("Auth Token:", token);
+        try {
+            const fetching = await fetch('https://mock-api.arikmpt.com/api/category', { 
+                headers: { 
+                    'Content-Type': 'application/json', 
+                    Authorization: `Bearer ${localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjNzFlNjY5LTM4ZGYtNGRkNy04NDYwLTc4ODc2ZmM0NTNjOSIsImlhdCI6MTY4NjY3MzQzOSwiZXhwIjoxNjg2Njk1MDM5fQ.IKZrgbPGEYULE_G7E8vopOMDmnCLxZaFKuArnXkcL6U')}`
+                },
+            })
+            const response: GetProductResponse = await fetching.json();
+            setProducts(response.products ?? []); 
+        } catch (error) {
+            alert(error);
+        }
     }
 
-    useEffect(
-        () => {
-            getProductList()
-        },
-        []
-    )
+
+    // Create a ref for handleNavigate
+    const handleNavigateRef = useRef<(path: string) => void>((path: string) => {
+        navigate(path);
+    });
+
+    // Extract the function from the ref
+    const handleNavigate = handleNavigateRef.current;
+
+
+    useEffect(() => {
+
+        const token = localStorage.getItem('authToken');
+        if(!token) {
+            handleNavigate('/Product'); 
+            return;
+        }
+            getProductList();
+        }, [handleNavigate]);
 
     const removeProduct = async (id: number) => {
         try {
@@ -29,7 +53,7 @@ const ProductList = () => {
                 method: 'DELETE',
                 headers: { 
                     'Content-Type': 'application/json', 
-                    Authorization: `Bearer ${localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjNzFlNjY5LTM4ZGYtNGRkNy04NDYwLTc4ODc2ZmM0NTNjOSIsImlhdCI6MTY4NjY3MzQzOSwiZXhwIjoxNjg2Njk1MDM5fQ.IKZrgbPGEYULE_G7E8vopOMDmnCLxZaFKuArnXkcL6U')}`
+                    Authorization: `Bearer ${localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OTNlMmU3LWRiMzMtNGY3Mi04N2IzLWU4ODFhYjdkZjNlYSIsImlhdCI6MTY5NTQzNTkwOCwiZXhwIjoxNjk1NDU3NTA4fQ.4tE8CWS56MD37TfRuLmtjFfVe3xwEx7V6gAbrjtdSuU')}`
                     // 'authToken'
                 },
             })
