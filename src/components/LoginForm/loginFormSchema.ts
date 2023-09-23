@@ -10,5 +10,5 @@ export const validationSchema = yup.object({
     password: yup.string()
                  .required()
                  .min(8, 'Password is too short - should be 8 characters at least.')
-                 .matches(/^(?=.*\d)(?=.*[a-zA-Z]).+$/, 'Password can only contain latin letters & numbers.')
+                //  .matches(/^(?=.*\d)(?=.*[a-zA-Z]).+$/, 'Password can only contain latin letters & numbers.')
 })
