@@ -1,4 +1,4 @@
-import { Button, Card, Input, Typography } from "antd"
+import { Button, Card, Input, Select, Typography } from "antd"
 import { useFormik } from "formik"
 import { Product, ProductForm as ProductFormProps } from "../../types"
 import { initialValues, validationSchema } from "./productFormSchema"
@@ -20,6 +20,11 @@ const ProductForm = ({ onSubmit, product } : Props) => {
         validationSchema: validationSchema
     })
 
+    const statusOptions = [
+        { value: true, label: 'Active' },
+        { value: false, label: 'Inactive' },
+    ];
+
     return (
         <Card title={"Product Form"} bordered style={{ width: 350 }}>
             <form onSubmit={formMik.handleSubmit}>
@@ -36,11 +41,19 @@ const ProductForm = ({ onSubmit, product } : Props) => {
                 </div>
                 <div>
                     <Typography.Paragraph>{'Product Status'}</Typography.Paragraph>
-                    <Input name={'status'}
-                        value={formMik.values.status.toString()} 
-                        onChange={formMik.handleChange('status')}
-                        status={formMik.errors.status && 'error'}
-                    />
+                    <Select 
+                        // name={'status'}
+                        value={formMik.values.status} 
+                        onChange={(value) => formMik.setFieldValue('status', value)}
+                        status={formMik.errors.status ? 'error' : undefined}
+                    >
+                        {statusOptions.map((option) => (
+                            <Select.Option key={String(option.value)} value={option.value}>
+                                {option.label}
+                            </Select.Option>
+                        ))}
+                    </Select>
+
                     {formMik.errors.status && (
                         <Typography.Paragraph>{formMik.errors.status}</Typography.Paragraph>
                     )}
