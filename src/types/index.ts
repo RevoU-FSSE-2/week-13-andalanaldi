@@ -19,23 +19,24 @@ export interface LoginForm {
 }
 
 export interface LoginResponse {
-    email: string;
-    firstName: string;
-    lastName: string;
-    username: string;
+    // email: string;
+    // firstName: string;
+    // lastName: string;
+    // username: string;
     token: string;
 }
 
 export interface RegisForm {
-    username: string;
+    name: string;
     email   : string;
     password: string;
 }
 
 export interface RegisResponse {
-    username: string;
+    id: string;
+    name: string;
     email: string;
-    // firstName: string;
-    // lastName: string;
-    token: string;
+    password: string;
+    updated_at: string;
+    created_at: string;
 }

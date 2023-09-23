@@ -12,7 +12,7 @@ const ProductNew = () => {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json', 
-                    Authorization: `Bearer ${localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjNzFlNjY5LTM4ZGYtNGRkNy04NDYwLTc4ODc2ZmM0NTNjOSIsImlhdCI6MTY4NjY3MzQzOSwiZXhwIjoxNjg2Njk1MDM5fQ.IKZrgbPGEYULE_G7E8vopOMDmnCLxZaFKuArnXkcL6U')}`
+                    Authorization: `Bearer ${localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OTNlMmU3LWRiMzMtNGY3Mi04N2IzLWU4ODFhYjdkZjNlYSIsImlhdCI6MTY5NTQzNTkwOCwiZXhwIjoxNjk1NDU3NTA4fQ.4tE8CWS56MD37TfRuLmtjFfVe3xwEx7V6gAbrjtdSuU')}`
                     // 'authToken'
                 },
                 body: JSON.stringify({

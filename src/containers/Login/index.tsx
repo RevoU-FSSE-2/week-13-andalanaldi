@@ -11,7 +11,7 @@ const Login = () => {
         })
         const response: LoginResponse = await fetching.json()
         if(response) {
-            localStorage.setItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjNzFlNjY5LTM4ZGYtNGRkNy04NDYwLTc4ODc2ZmM0NTNjOSIsImlhdCI6MTY5NTQyNzk5MiwiZXhwIjoxNjk1NDQ5NTkyfQ._YMKwWe0NC4Yh7FjQW3oc_PDYHEWZLOW_g36QWAkptc', response.token)
+            localStorage.setItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OTNlMmU3LWRiMzMtNGY3Mi04N2IzLWU4ODFhYjdkZjNlYSIsImlhdCI6MTY5NTQzNTkwOCwiZXhwIjoxNjk1NDU3NTA4fQ.4tE8CWS56MD37TfRuLmtjFfVe3xwEx7V6gAbrjtdSuU', response.token)
             // 'token'
             window.location.replace('/')
         }

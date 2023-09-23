@@ -23,14 +23,14 @@ const RegisForm = ({ onSubmit } : Props) => {
         <Card title={"Registration Page"} bordered style={{ width: 350 }}>
             <form onSubmit={formMik.handleSubmit}>
                 <div>
-                    <Typography.Paragraph>{'Username'}</Typography.Paragraph>
-                    <Input name={'username'}
-                        value={formMik.values.username} 
-                        onChange={formMik.handleChange('username')}
-                        status={formMik.errors.username && 'error'}
+                    <Typography.Paragraph>{'Name'}</Typography.Paragraph>
+                    <Input name={'Name'}
+                        value={formMik.values.name} 
+                        onChange={formMik.handleChange('name')}
+                        status={formMik.errors.name && 'error'}
                     />
-                    {formMik.errors.username && (
-                        <Typography.Paragraph>{formMik.errors.username}</Typography.Paragraph>
+                    {formMik.errors.name && (
+                        <Typography.Paragraph>{formMik.errors.name}</Typography.Paragraph>
                     )}
                 </div>
                 <div>
