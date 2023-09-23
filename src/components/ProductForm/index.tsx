@@ -35,36 +35,14 @@ const ProductForm = ({ onSubmit, product } : Props) => {
                     )}
                 </div>
                 <div>
-                    <Typography.Paragraph>{'Product Price'}</Typography.Paragraph>
-                    <Input name={'price'}
-                        value={formMik.values.price} 
-                        onChange={formMik.handleChange('price')}
-                        status={formMik.errors.price && 'error'}
+                    <Typography.Paragraph>{'Product Status'}</Typography.Paragraph>
+                    <Input name={'status'}
+                        value={formMik.values.status.toString()} 
+                        onChange={formMik.handleChange('status')}
+                        status={formMik.errors.status && 'error'}
                     />
-                    {formMik.errors.price && (
-                        <Typography.Paragraph>{formMik.errors.price}</Typography.Paragraph>
-                    )}
-                </div>
-                <div>
-                    <Typography.Paragraph>{'Product Brand'}</Typography.Paragraph>
-                    <Input name={'brand'}
-                        value={formMik.values.brand} 
-                        onChange={formMik.handleChange('brand')}
-                        status={formMik.errors.price && 'error'}
-                    />
-                    {formMik.errors.brand && (
-                        <Typography.Paragraph>{formMik.errors.brand}</Typography.Paragraph>
-                    )}
-                </div>
-                <div>
-                    <Typography.Paragraph>{'Product Category'}</Typography.Paragraph>
-                    <Input name={'category'}
-                        value={formMik.values.category} 
-                        onChange={formMik.handleChange('category')}
-                        status={formMik.errors.category && 'error'}
-                    />
-                    {formMik.errors.category && (
-                        <Typography.Paragraph>{formMik.errors.category}</Typography.Paragraph>
+                    {formMik.errors.status && (
+                        <Typography.Paragraph>{formMik.errors.status}</Typography.Paragraph>
                     )}
                 </div>
                 <Button type={'primary'} htmlType={"submit"}>Submit</Button>
