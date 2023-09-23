@@ -8,15 +8,13 @@ export interface GetProductResponse {
 export interface Product {
     id: number;
     title: string;
-    price: number;
-    brand: string;
-    category: string;
+    status: boolean;
 }
 
 export type ProductForm = Omit<Product,'id'>
 
 export interface LoginForm {
-    username: string;
+    email: string;
     password: string;
 }
 

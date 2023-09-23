@@ -2,14 +2,10 @@ import * as yup from 'yup'
 
 export const initialValues = {
     title: '',
-    price: 0,
-    brand: '',
-    category: '',
+    status: false,
 }
 
 export const validationSchema = yup.object({
     title: yup.string().required(),
-    price: yup.number().min(1).required(),
-    brand: yup.string().required(),
-    category: yup.string().required()
+    status: yup.boolean().required(),
 })

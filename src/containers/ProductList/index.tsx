@@ -11,7 +11,7 @@ const ProductList = () => {
     const navigate = useNavigate();
 
     const getProductList = async () => {
-        const fetching = await fetch('https://dummyjson.com/products')
+        const fetching = await fetch('https://mock-api.arikmpt.com/api/category?page=1&name=mock%20category')
         const response: GetProductResponse = await fetching.json();
         setProducts(response.products ?? []);
     }
@@ -25,8 +25,13 @@ const ProductList = () => {
 
     const removeProduct = async (id: number) => {
         try {
-            const fetching = await fetch(`https://dummyjson.com/products/${id}`, {
-                method: 'DELETE'
+            const fetching = await fetch(`https://mock-api.arikmpt.com/api/category/34506582-54ef-4997-ad9b-1d05b716023c/${id}`, {
+                method: 'DELETE',
+                headers: { 
+                    'Content-Type': 'application/json', 
+                    Authorization: `Bearer ${localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhjNzFlNjY5LTM4ZGYtNGRkNy04NDYwLTc4ODc2ZmM0NTNjOSIsImlhdCI6MTY4NjY3MzQzOSwiZXhwIjoxNjg2Njk1MDM5fQ.IKZrgbPGEYULE_G7E8vopOMDmnCLxZaFKuArnXkcL6U')}`
+                    // 'authToken'
+                },
             })
 
             const response = await fetching.json()
@@ -55,21 +60,9 @@ const ProductList = () => {
             key: 'title',        
         },
         {
-            title: 'Price',
-            dataIndex: 'price',
-            key: 'price',
-        },
-        {
-            title: 'Brand',
-            dataIndex: 'brand',
-            key: 'brand',
-            //
-        },
-        {
-            title: 'Category',
-            dataIndex: 'category',
-            key: 'category',
-            //
+            title: 'Status',
+            dataIndex: 'status',
+            key: 'status',
         },
         {
             title: 'Action',

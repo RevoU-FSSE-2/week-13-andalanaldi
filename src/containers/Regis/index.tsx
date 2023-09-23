@@ -4,7 +4,7 @@ import { RegisForm } from "../../components"
 const Regis = () => {
 
     const onSubmit = async (data: RegisFormProps) => {
-        const fetching = await fetch('https://dummyjson.com/auth/login', {
+        const fetching = await fetch('https://mock-api.arikmpt.com/api/user/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
