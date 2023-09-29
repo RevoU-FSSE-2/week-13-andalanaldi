@@ -1,21 +1,21 @@
 import { Button, Card, Input, Select, Typography } from "antd"
 import { useFormik } from "formik"
-import { Product, ProductForm as ProductFormProps } from "../../types"
+import { Category, CategoryForm as CategoryFormProps } from "../../types"
 import { initialValues, validationSchema } from "./productFormSchema"
 
 interface Props {
-    onSubmit: (values: ProductFormProps) => void
-    product?: Product
+    onSubmit: (values: CategoryFormProps) => void
+    category?: Category
 }
 
-const ProductForm = ({ onSubmit, product } : Props) => {
+const CategoryForm = ({ onSubmit, category } : Props) => {
 
-    const handleSubmit = (values: ProductFormProps) => {
+    const handleSubmit = (values: CategoryFormProps) => {
         onSubmit(values)
     }
 
     const formMik = useFormik({
-        initialValues: product ?? initialValues,
+        initialValues: category ?? initialValues,
         onSubmit: handleSubmit,
         validationSchema: validationSchema
     })
@@ -30,22 +30,22 @@ const ProductForm = ({ onSubmit, product } : Props) => {
             <form onSubmit={formMik.handleSubmit}>
                 <div>
                     <Typography.Paragraph>{'Product Name'}</Typography.Paragraph>
-                    <Input name={'title'}
-                        value={formMik.values.title} 
-                        onChange={formMik.handleChange('title')}
-                        status={formMik.errors.title && 'error'}
+                    <Input name={'name'}
+                        value={formMik.values.name} 
+                        onChange={formMik.handleChange('name')}
+                        status={formMik.errors.name && 'error'}
                     />
-                    {formMik.errors.title && (
-                        <Typography.Paragraph>{formMik.errors.title}</Typography.Paragraph>
+                    {formMik.errors.name && (
+                        <Typography.Paragraph>{formMik.errors.name}</Typography.Paragraph>
                     )}
                 </div>
                 <div>
                     <Typography.Paragraph>{'Product Status'}</Typography.Paragraph>
                     <Select 
                         // name={'status'}
-                        value={formMik.values.status} 
-                        onChange={(value) => formMik.setFieldValue('status', value)}
-                        status={formMik.errors.status ? 'error' : undefined}
+                        value={formMik.values.is_active} 
+                        onChange={(value) => formMik.setFieldValue('is_active', value)}
+                        status={formMik.errors.is_active ? 'error' : undefined}
                     >
                         {statusOptions.map((option) => (
                             <Select.Option key={String(option.value)} value={option.value}>
@@ -54,8 +54,8 @@ const ProductForm = ({ onSubmit, product } : Props) => {
                         ))}
                     </Select>
 
-                    {formMik.errors.status && (
-                        <Typography.Paragraph>{formMik.errors.status}</Typography.Paragraph>
+                    {formMik.errors.is_active && (
+                        <Typography.Paragraph style={{ color: "red" }}>{formMik.errors.is_active}</Typography.Paragraph>
                     )}
                 </div>
                 <Button type={'primary'} htmlType={"submit"}>Submit</Button>
@@ -64,4 +64,4 @@ const ProductForm = ({ onSubmit, product } : Props) => {
     )
 }
 
-export default ProductForm
+export default CategoryForm

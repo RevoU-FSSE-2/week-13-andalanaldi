@@ -1,10 +1,10 @@
 import { Table } from "antd"
 import { ColumnsType } from "antd/es/table";
-import { Product } from "../../types"
+import { Category } from "../../types"
 
 interface Props {
-    data: Product[];
-    columns: ColumnsType<Product>;
+    data: Category[];
+    columns: ColumnsType<Category>;
 }
 
 const ProductList = ({ data, columns} : Props) => {
