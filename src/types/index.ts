@@ -11,7 +11,13 @@ export interface Product {
     status: boolean;
 }
 
-export type ProductForm = Omit<Product,'id'>
+export type CategoryForm = Omit<Category,'id'>
+
+// export interface Category extends CategoryForm {
+//     id: string | undefined;
+// }
+
+// export type ProductForm = Omit<Product,'id'>
 
 export interface LoginForm {
     email: string;
@@ -39,4 +45,29 @@ export interface RegisResponse {
     password: string;
     updated_at: string;
     created_at: string;
+}
+
+interface token {
+    token : string;
+}
+
+export interface LoginResponse2 {
+    data: token;
+}
+
+export const headers = {
+    Authorization: `bearer ${localStorage.getItem('token')}`
+}
+
+export interface GetCategoryResponse {
+    data: Category[];
+    current_page: number;
+    total_item: number;
+    total_page: number;
+}
+
+export interface Category {
+    id: string | undefined;
+    name: string;
+    is_active: boolean;
 }

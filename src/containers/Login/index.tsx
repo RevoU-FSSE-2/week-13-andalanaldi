@@ -1,4 +1,4 @@
-import { LoginForm as LoginFormProps, LoginResponse } from "../../types"
+import { LoginForm as LoginFormProps, LoginResponse2 } from "../../types"
 import { LoginForm } from "../../components"
 
 const Login = () => {
@@ -8,13 +8,20 @@ const Login = () => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
-        })
-        const response: LoginResponse = await fetching.json()
-        if(response) {
-            localStorage.setItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OTNlMmU3LWRiMzMtNGY3Mi04N2IzLWU4ODFhYjdkZjNlYSIsImlhdCI6MTY5NTQzNTkwOCwiZXhwIjoxNjk1NDU3NTA4fQ.4tE8CWS56MD37TfRuLmtjFfVe3xwEx7V6gAbrjtdSuU', response.token)
-            // 'token'
-            window.location.replace('/')
+        }) // ini berhasil
+        const response: LoginResponse2 = await fetching.json() // bakal gagal -> response = null, solusi ?
+        if(fetching.ok) {
+            //response
+            localStorage.setItem('token', response.data.token)
+        //     // 'token'
+        //     // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OTNlMmU3LWRiMzMtNGY3Mi04N2IzLWU4ODFhYjdkZjNlYSIsImlhdCI6MTY5NTczMzgwNiwiZXhwIjoxNjk1NzU1NDA2fQ.mJuCVBzjiHmjKtE-V623lQ2FVg4vTRYeqzBmELadgUk
+            window.location.replace('/') 
+        // } those part above is for advance assignment, a part below is for intermediate assignment 
+        // if (fetching.ok) {
+        //     // localStorage.setItem('token', response.data.token)
+        //     window.location.replace('/')
         }
+        fetching.status
     }
 
     return (

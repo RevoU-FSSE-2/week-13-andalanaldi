@@ -1,57 +1,69 @@
-import { ProductForm } from "../../components"
-import { ProductForm as ProductFormProps, Product } from "../../types"
+import { CategoryForm } from "../../components"
+import { CategoryForm as CategoryFormProps, Category } from "../../types"
 import { useNavigate, useParams } from "react-router-dom"
 import { useCallback, useEffect, useState } from "react";
+import { headers } from '../../types';
 
 const ProductEdit = () => {
 
     const navigate = useNavigate();
-    const [product, setProduct] = useState<Product>()
+    const [category, setCategory] = useState<Category>()
 
     const { id } = useParams();
 
-    const getProduct = useCallback(
+    const token = localStorage.getItem('token');
+    console.log("token:", token);
+
+    const getCategory = useCallback(
         async () => {
-            const fetching = await fetch(`https://mock-api.arikmpt.com/api/category/bb75cd96-1395-4241-91f3-9ad863de8f71/${id}`)
-            const response: Product = await fetching.json();
+            const fetching = await fetch(`https://mock-api.arikmpt.com/api/category/${id}`, {headers})
+            const response: Category = await fetching.json();
     
-            setProduct(response)
+            setCategory(response)
         },
         [id]
     )
 
     useEffect(
         () => {
-            getProduct()
+            getCategory()
         },
-        [getProduct]
+        [getCategory]
     )
 
-    const onSubmit = async (values: ProductFormProps) => {
+    const onSubmit = async (values: CategoryFormProps) => {
         try {
-            const fetching = await fetch(`https://mock-api.arikmpt.com/api/category/update/${id}`, {
+
+            const productEdit: Category = {
+                id : id,
+                name : values.name,
+                is_active : values.is_active,
+            }
+            const fetching = await fetch(`https://mock-api.arikmpt.com/api/category/update`, {
                 method: 'PUT',
-                headers: { 
+                headers: 
+                { 
                     'Content-Type': 'application/json', 
-                    Authorization: `Bearer ${localStorage.getItem('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5OTNlMmU3LWRiMzMtNGY3Mi04N2IzLWU4ODFhYjdkZjNlYSIsImlhdCI6MTY5NTQzNTkwOCwiZXhwIjoxNjk1NDU3NTA4fQ.4tE8CWS56MD37TfRuLmtjFfVe3xwEx7V6gAbrjtdSuU')}`
+                    Authorization: `Bearer ${token}`
                     // 'authToken'
                 },
-                body: JSON.stringify({
-                    "id": "bb75cd96-1395-4241-91f3-9ad863de8f71",
-                    "name": "mock category",
-                    "is_active" : false,
-                    ...values,
-                }),
+                body: JSON.stringify(
+                    productEdit
+                ),
             })
-            await fetching.json()
-            navigate('/product')
+            // await fetching.json()
+            if (fetching.ok) {
+                navigate('/product')
+            } else {
+                console.log("Failed to update category")
+            }
         } catch (error) {
             alert(error)
         }
     }
 
-    if(product) {
-        return <ProductForm onSubmit={onSubmit} product={product}/>
+    if(category) {
+        return <CategoryForm onSubmit={onSubmit} category={category}/>
     }
 
     return null
